@@ -1,0 +1,24 @@
+void insert(stack<int>&St,int ele)
+    {
+        if(St.empty())
+        St.push(ele);
+        else
+        {
+            int temp=St.top();
+            St.pop();
+            insert(St,ele);
+            St.push(temp);
+        }
+    }
+    void Reverse(stack<int> &St){
+        if(St.empty())
+        return;
+        int ele=St.top();
+        St.pop();
+        Reverse(St);
+        insert(St,ele);
+        
+        
+        
+        
+    }
