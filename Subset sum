@@ -1,0 +1,20 @@
+ void count(vector<int>&arr, vector<int>&res,int N,int i,int sum)
+    {
+        if(i==N)
+        {
+            res.push_back(sum);
+            return;
+        }
+        count(arr,res,N,i+1,sum+arr[i]);
+        count(arr,res,N,i+1,sum);
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        // Write Your Code here
+        vector<int>res;
+        int sum=0;
+        sort(arr.begin(),arr.end());
+        count(arr,res,N,0,sum);
+        sort(res.begin(),res.end());
+        return res;
+    }
