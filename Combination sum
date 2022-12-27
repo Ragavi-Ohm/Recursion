@@ -1,0 +1,32 @@
+void count(vector<int> &A,vector<vector<int>>&res,vector<int>&ds,int B,int n,int i)
+    {
+        if(i==n)
+        {
+            if(B==0)
+            {
+                res.push_back(ds);
+            }
+            return;
+        }
+        if(A[i]<=B)
+        {
+            ds.push_back(A[i]);
+            count(A,res,ds,B-A[i],n,i);
+            ds.pop_back();
+        }
+        count(A,res,ds,B,n,i+1);
+    }
+    vector<vector<int> > combinationSum(vector<int> &A, int B) {
+        // Your code here
+        vector<vector<int>>res;
+        vector<int>ds;
+       
+        
+        sort(A.begin(),A.end());
+        A.erase(unique(A.begin(),A.end()),A.end());
+        int n=A.size();
+        count(A,res,ds,B,n,0);
+        
+        //sort(res.begin(),res.end());
+        return res;
+    }
