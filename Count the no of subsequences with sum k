@@ -1,0 +1,30 @@
+int count(vector<int>&nums,int target,int sum,int n,int i)
+    {
+        if(i==n)
+        {
+            if(sum==target)
+            {
+                return 1;
+            }
+            else
+            return 0;
+        }
+        
+        
+           
+            sum=sum+nums[i];
+            int l=count(nums,target,sum,n,i+1);
+            sum=sum-nums[i];
+            int r=count(nums,target,sum,n,i+1);
+        
+        return l+r;
+    }
+    int numSubseq(vector<int>& nums, int target) {
+        int res=0;
+        int mod=10000000007;
+        int n=nums.size();
+        int sum=0;
+        
+        res=count(nums,target,sum,n,0);
+        return res%mod;
+    }
