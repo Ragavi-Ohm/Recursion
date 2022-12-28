@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void count(vector<int>&nums,vector<int>&ds,vector<vector<int>>&res,int i)
+    {
+        res.push_back(ds);
+        for(int j=i;j<nums.size();j++)
+        {
+            if(j!=i && nums[j-1]==nums[j]) continue;
+            ds.push_back(nums[j]);
+            count(nums,ds,res,j+1);
+            ds.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        vector<int>ds;
+        vector<vector<int>>res;
+        count(nums,ds,res,0);
+        return res;
+    }
+};
